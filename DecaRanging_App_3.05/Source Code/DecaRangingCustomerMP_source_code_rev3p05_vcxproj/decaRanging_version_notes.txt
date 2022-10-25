@@ -1,0 +1,780 @@
+=============================================================================
+=                                                                           =
+=             D E C A R A N G I N G   -   N o t e s                         =
+=                                                                           =
+=============================================================================
+= Release notes for DecaRanging.exe, the DecaWave Ranging Demo software
+= Copyright 2014 (c) DecaWave Ltd, Dublin, Ireland.
+= All rights reserved.
+= Authors: Billy Verso, Zoran Skrba, 2014.
+=============================================================================
+
+
+ISSUES:  
+
+1) If antenna delay is too large the resulting RTD measurements are negative
+   (internally) and discarded as bad.  So, if it seems as if Time of Flight
+   is not working, first clear antenna delays to see if that is the issue.
+   
+2) This code base supports DW1000-MP  -----> ONLY !!!!!
+
+=============================================================================
+DecaRanging.exe Release Version 3.05  ( 07 October 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Fixed windows timer wrap around handling.
+
+b) Changed the version string to 3.05.
+
+=============================================================================
+DecaRanging.exe Release Version 3.04  ( 02 October 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Fixed TOF report being done twice on same value when timeouts on tag side.
+
+b) Fixed overflow in delay for anchor's reponse computation (on tag side).
+
+c) Changed the limit of response delays set by user to 1000 ms.
+
+d) Changed the version string to 3.04.
+
+=============================================================================
+DecaRanging.exe Release Version 3.03  ( 28 September 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Fix accumulator data logging (RX and TX).
+
+b) Changed the version string to 3.03.
+
+=============================================================================
+DecaRanging.exe Release Version 3.02  ( 17 September 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Fixed tx power setting on init.
+
+b) Changed the version string to 3.02.
+
+=============================================================================
+DecaRanging.exe Release Version 3.01  ( 15 September 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Changed computation of response delays to be consistent with response
+delays definition in Decawave's documents.
+
+b) Changed clock offset display to explicitely tell which end is faster/slower
+than the other one.
+
+c) Changed the version string to 3.01.
+
+NOTE: This version is not compatible with previous ones! 
+
+=============================================================================
+DecaRanging.exe Release Version 3.00  ( 10 September 2015 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Implemented asymmetric two-way ranging process 
+
+b) Made the anchor define tag's reponse delay (between anchor's response and
+final transmission) by adding an extra field in ranging init message and
+recomputing internal timings upon reception of it.
+
+c) Removed use of ack messages
+
+d) ToF report to tag is now done through anchor response message so send
+report option has been removed
+
+e) Removed support of deep sleep mode
+
+f) Removed user defined payload option
+
+g) Updated payload configuration dialog (now timing configuration dialog) to
+take into account all those different changes and to be able to configure all
+the different timings in the ranging process
+
+h) Updated clock offset computation formula 
+
+i) Formatting refactoring (indent, constant names, variable names, etc.)
+
+j) Changed the version string to 3.00
+
+NOTE: This version is not compatible with previous ones! 
+
+=============================================================================
+DecaRanging.exe Release Version 2.68  ( 8 April 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Changed the version string to 2.68
+
+b) Driver updates for TREK calibration 
+
+c) fix for OC anchor support (new 707 LNA configuration)
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.67  ( 18 Feb 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Changed the version string to 2.67
+
+b) Removed a timeout that was in Tag associated and ranging mode, so that now
+   when tag & anchor units go out of range of each other for any period and 
+   then come back into range of each other the ranging will automatically 
+   resume.  Previously after 20 poll attempts without response the tag would 
+   revert to sending blinks and then to resume ranging the RESTART button on
+   the anchor had to be clicked to redo the discovery-association phase with
+   the tag.
+
+=============================================================================
+DecaRanging.exe Release Version 2.66  ( 3 Feb 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.66
+
+b) versions 2.61 - 2.65 were used for calibration test and debug 
+
+c) API definition update (2.14.00) - driver tidyup and 
+new GPIO config functions dwt_setGPIOvalue() and dwt_setGPIOdirection()
+
+d) LNA config function has been renamed and is called in the instanceinit if the HW is REK 1101 anchor
+
+e) fix for runtime enable/disable of DEEP_SLEEP
+
+f) fix a bug in dwt_setleds function
+
+g) add optional compile time switch to enable accumulator auto-logging 
+(TAG_ANCHOR_AUTO_LOG) when tag or anchor selected
+
+h) bug 694 updates to 0x2b:b reg for channel 5 and chnage in dwt_initialise function
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.60  ( 12 Nov 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.60
+
+b) API definition update (2.13.00) - added LNA control function
+
+c) fix for config of DEEP_SLEEP = 0, Tag stopping bug
+
+d) fix for new dwt_setleds change - LEDs were not turned on
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.59  ( xx Nov 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.59
+
+b) API definition update (2.12.01)
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.58  ( 6th Nov 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.58
+
+b) remove ranges history view
+
+c) do not convert small negative ranges into positive and do not display negative ranges,
+
+d) fix XTAL trim default value written if no OTP value programmed
+
+=============================================================================
+DecaRanging.exe Release Version 2.57  ( 5th Oct 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.57
+
+b) added reading/kicking of LDO tune value from OTP
+
+c) updated API for temperature and voltage reading function dwt_readtempvbat()
+
+=============================================================================
+DecaRanging.exe Release Version 2.52-2.56  ( 5th Sept 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.52-2.56
+
+b) as all of these are test/internal releases
+
+=============================================================================
+DecaRanging.exe Release Version 2.51  ( 4th Sept 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.51
+
+b) added low-power listener options - SNIFF mode to Listener instance
+
+c) ported driver 2.9.1 from ARM code base (fix for no LDE loading)
+
+d) correct double buffering overrun condition and double buffering without auto rx re-enable
+(driver version 2.10.0)
+
+e) manual double buffer mode (no auto rx re-enable), enable the receiver before the callback, 
+so that while the data is read from one buffer the receiver is receiving into the other buffer.
+
+f) added gearing table loading for 64 length preamble
+
+g) fixed rx auto re-enable function - driver 2.11.0
+
+h) fixed dwt_readtempvbat - the temperature and voltage values were swapped
+
+i) disable DEEPSLEEP for the Tag
+
+=============================================================================
+DecaRanging.exe Release Version 2.50  ( 15th May 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.50
+
+b) If LDE ucode is not loaded as part od initialisation in dwt_initialise
+then the LDE run enable bit (0x36:0x4) will be disabled
+
+c) Add menu option for CW mode
+
+d) Change STDEV to be calculated from 50 ranges
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.49  ( 6th May 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.49
+
+b) added an option to disable/enable the DEEP SLEEP (for a Tag)
+
+c) added STDEV to the 2nd display line... (STDEV of 10)
+
+d) Default channel configuration changed to channel 2, 64M PRF.
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.48  ( 1st May 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.48
+
+b) fix the bug with USB cable disconnection (if cable pulled out of PC the 
+application will now exit, this prevents PC from hanging)
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.47  ( 30th April 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.47
+
+b) fix the bug with antenna delay config on the sleeping Tag instance.
+
+c) new antenna default values for both 16 and 64 M PRF
+
+d) fixed double buffer overrun issue handling - both frames are dumped
+
+e) fix cheetah interrupts issue, and COM port timeout issue
+
+Note: this is a production test release build for EVK calibration.
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.46  ( 23rd April 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.46
+
+b) Default channel configuration changed to channel 2.
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.45  ( 23rd April 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.45
+
+b) Add average (of 10) RSL and SNR values to the  ACC display
+
+c) Add continuous TX frame mode to debug menu
+
+d) disable clock offset selection for a Tag mode, as Tag does not calculate
+   it
+
+e) Add dwt_readtxtimestamplo32() and dwt_readrxtimestamplo32() functions to
+   the driver (driver rev 2.8.0)
+
+f) Fix dwt_readaccdata() function - the offset passed was not used
+
+g) change the tagList[] to be a 10 x 8 byte array - as opposed to 10 x 64 bit
+   number array and change relpyAddress to be an 8 byte array instead of 64
+   bit number
+
+h) fix lateRX count/incrementing 
+
+i) set instToSleep to 1 when the Poll is sent, so that the Tag will go to
+   Sleep after receiving the ToF report or timing out
+
+j) Modified cheetah code to align with latest v3.06 API and v3.07 DLL from
+   Total Phase, but also made it still work with the original v3.00 DLL.  I
+   believe it will also continue to work if Total Phase update the DLL
+   version so long as they keep the API (and its version number) unchanged.
+
+k) fix wideband (ch 4 and 7) ranging tables index array
+
+l) workarounds for bugs 643, 637, 622 
+
+m) change instance event handling - add queue to handle events
+
+n) remove delayed receive - use wait4response
+
+o) work on address mode handling - supports short and long address mode data frames, 
+tidy up 64-bit and 16-bit ranging application messages (can compile to use either)
+
+p) remove SPI speed change before a call to dwt_readtempvbat function as not necessary.
+
+q) remove auto RX re-enable as it does not work right with single buffer, auto ACK bug 650
+
+r) set default 110k rate preamble length to 1024 to match the EVK ARM defaults
+
+s) limit payload length to 56 bytes for rev 1.0 USB2SPI EVB ARM SW driver
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.44  ( 13th January 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.44
+
+b) fix ACK pending issue before Poll message is sent
+
+c) fix for TX fail (delayed TX fail) and wait 4 response set (the RX was not
+   turned on)
+
+d) fix for non-STD SFD config for the 6.8M data rate - chan config menu
+
+e) 6.81 Mb rate uses smart TX mode
+
+f) API header work, register name matching  with the User Manual
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.43  ( 6th January 2014 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.43
+
+b) fix ACK timeout - when good frame is received instead of an ACK, consider
+   this as ACK timeout
+
+c) frame filtering enable tidy up - need to make sure frame filtering is
+   enabled if the ACK is missed to the ranging init message.
+
+d) remove some debug code
+
+e) fix total tag rx timeout counter
+
+f) workaround for ACK bug (627)
+
+g) fix non-discovery mode anchor selection
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.42  ( 19th December 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.42
+
+b) SPI logging added/corrected for USB mode.
+
+c) Changed splash BMP to align with user manual colour scheme and font
+
+d) change the isEVB1000device() function to do a better check 
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.41  ( 9th December 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.41
+
+b) added RX buffer sync API dwt_syncrxbufptrs() function
+
+c) GUI work for the new DecaRanging discovery mode - tidy up
+
+d) fixes for double buffering mode
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.38  ( 2nd December 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.38
+
+b) fix the long term average issue when using "Pause"
+
+c) remove Sleep() from writeCOMdata() function
+
+d) tidy up the _dwt_disablesequencing() function
+
+e) fix OTP read reliability by switching the system clock to XTAL before the
+   read
+
+f) add a fix whereby the anchor will ignore unexpected ACKs 
+
+g) port any new XML configuration changes - rev 3.5 (1.17)
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.37  ( 29th November 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.37
+
+b) fix the driver setting of the antenna delay calibration value
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.36  ( 29th November 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.36
+
+b) this code does not use Discovery and is interoperable with ARM rev 2.11
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.35  ( 29th November 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.35
+
+b) added range bias correction
+
+c) added temperature and voltage bytes to the poll message
+
+d) added remote ranging response configuration (needs ARM code rev 2.14 or
+   higher)
+
+e) GUI tidy-ups regarding multiple anchors and blink sleep time
+
+d) use calibration values for TX power, antenna delay and XTAL trim
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.30  ( 9th November 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.30
+
+b) added "discovery mode", the tag will blink initially, until the anchors
+   tell it to range with it.
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.20  ( 25th October 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.20
+
+b) bug fix for double buffer pointer synchronisation
+
+c) small optimisation in reading of diagnostics
+
+d) TX CF configuration update
+
+e) Fix for TX power NVM data configuration
+
+
+=============================================================================
+DecaRanging.exe Release Version 2.00  ( 24th October 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 2.00
+
+b) USB to SPI driver optimisation - needs DW ARM USB driver version 1.0 or
+   higher
+
+c) Calibration data reading from NVM and corresponding API changes 
+
+d) Changed the DecaRanging Final message to use 5 byte time-stamps
+
+e) The Time Of Flight report now contains the cumulative ToF and is 5 bytes
+   long needs to be divided by 4 before converting to single ToF/distance
+ 
+
+=============================================================================
+DecaRanging.exe Release Version 1.15  ( 9th October 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.15
+
+b) fix for delayed receive failure
+
+c) added SPI over VCP support (if no cheetah will check if EVB1000 connected
+   on COM port)
+
+d) added logging of RSL and FSL values
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.14  ( 2nd October 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.14
+
+b) added lot ID reading
+
+c) take out the micro-code CRC check (we'll assume the NVM is programmed
+   correctly)
+
+d) change the dwt_initialise() function to take a parameter which kicks or
+   skips loading of LDE code
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.13  ( 12th September 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.13
+
+b) sleep restored
+
+c) further API re-work (tidy-up)
+
+=============================================================================
+DecaRanging.exe Release Version 1.12  ( 12th September 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.12
+
+b) no sleep - internal release for HW testing
+
+c) API work - addition of SLEEP configuration and Vbat+temp reading functions
+
+d) fix for ACK handling in the ISR, process RX event first then the ACK TX
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.11  ( 6th September 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.11
+
+b) no sleep - internal release for HW testing
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.10  ( 5th September 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) changed the version string to 1.10
+
+b) the ucode will be only loaded if programmed in ROM/NVM
+
+c) API review work
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.09  ( xxth August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Made new file "DecaRanging_Ver.h" file to hold the software version string
+   for the decaranging application, and changed the string to number "1.09".
+
+b) File "deca_version.h" now defines the version of the DW1000 device driver
+   including its API, the symbols defined are: DW1000_DRIVER_VERSION and
+   DW1000_DEVICE_DRIVER_VER_STRING. For more details see notes added in the
+   "deca_version.h" file.
+
+c) Modified the help "about" dialog box to include the Device Driver version
+   String and the copyright notice date to 2013
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.08  ( 16th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.08
+
+b) Only load the ucode from NVM, on wake up, if valid code is programmed
+
+c) Added 16 bit addressing support
+
+d) Added gear table loading function 
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.07  ( 16th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.07
+
+b) Enable loading from NVM
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.06  ( 15th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.06
+
+b) New ucode RC15
+
+c) Disable loading from NVM
+
+d) Increase the N_STD_REPL_CONTRIB to 7
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.05  ( 12th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.05
+
+b) New peak coefficients: PEAK_COEFF16 (0x1600), PEAK_COEFF64 (0x0600)
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.04  ( 8th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.04
+
+b) new microcode RC 13 (rev 1051)
+
+=============================================================================
+DecaRanging.exe Release Version 1.03  ( 8th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.03
+
+b) new microcode RC 12 (rev 1048)
+
+=============================================================================
+DecaRanging.exe Release Version 1.02  ( 8th August 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.02
+
+b) new microcode RC 12
+
+c) API work
+
+=============================================================================
+DecaRanging.exe Release Version 1.01  ( 9th July 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.01
+
+b) update the parameters for MP, merged with XML version XXX
+
+c) tested Auto ACK and Deep Sleep - added a workaround for TX antenna delay
+   not being preserved after deep sleep
+
+d) API work
+
+
+=============================================================================
+DecaRanging.exe Release Version 1.00  ( 18th July 2013 )
+=============================================================================
+
+It is updated with the following changes:
+
+a) Version number changed to 1.0
+
+b) initial MP support
+
+=============================================================================

@@ -1,0 +1,510 @@
+//Microsoft Visual C++ generated resource script.
+//
+/*! ----------------------------------------------------------------------------
+ * @file	resourse.rc
+ * @brief	Manually edited file to add definitions for application's menus, buttons and dialog boxes
+ *
+ * @attention
+ *
+ * Copyright 2013 (c) DecaWave Ltd, Dublin, Ireland.
+ *
+ * All rights reserved.
+ *
+ */
+
+#include "resource.h"
+#include "DecaRanging_Ver.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+
+IDI_DECARANGING       ICON          "DecaRanging.ico"
+IDI_SMALL             ICON          "small.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SPLASH     BITMAP "DecaWave.bmp"
+
+IDB_FOLDER     BITMAP   "Folder.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_DECARANGING MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                                       IDM_EXIT
+    END
+    POPUP "&Configuration"
+    BEGIN
+        MENUITEM "&Channel Setup",                              IDM_CHANSETUP
+        MENUITEM "&Timing Setup",                               IDM_TIMINGSETUP
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Large Range Display ENABLE",                 IDM_LARGETEXTVIEW
+        MENUITEM "Large Display Mode - instantaneous",          IDM_LARGEINST
+        MENUITEM "Large Display Mode - average of 4",           IDM_LARGEAVE4
+        MENUITEM "Large Display Mode  - average of 8",          IDM_LARGEAVE8
+        MENUITEM "Large Display Precision - 2 decimal places",  IDM_LARGE2DP
+        //MENUITEM SEPARATOR
+        //MENUITEM "Range History View ENABLE",					IDM_RNGVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "Ch&annel Response View ENABLE",               IDM_ACCVIEW
+        MENUITEM "Channel Response &First Path Align",          IDM_ACCFPALIGN
+        MENUITEM "Channel Response &Only Show Magnitudes",      IDM_ACCMAGONLY
+        MENUITEM SEPARATOR
+        MENUITEM "Display Distance in &Feet and Inches",        IDM_DISPFEETINCHES
+		MENUITEM "Display Clock Offset",						IDM_DISPCLKOFFSET
+    END
+    POPUP "&Debug"
+    BEGIN
+        MENUITEM "&Register Access",                            IDM_REGACCESS
+        MENUITEM SEPARATOR
+        MENUITEM "&Log Channel Responses",                      IDM_LOGALLACC
+        MENUITEM "Log SPI activity",                            IDM_LOGSPI
+        MENUITEM SEPARATOR
+        MENUITEM "Soft Reset (and Restart)",                    IDM_SOFTRESET
+		MENUITEM SEPARATOR
+        MENUITEM "Continuous Frame mode",                       IDM_CONTFRAME
+		MENUITEM "Continuous Wave mode",                        IDM_CWMODE
+		//MENUITEM SEPARATOR
+		//MENUITEM "Load micro-code",								IDM_UCODELOAD
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                                  IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_DECARANGING ACCELERATORS
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+    "h",            IDM_ABOUT,              ASCII
+    "H",            IDM_ABOUT,              ASCII
+    "r",            IDM_REGACCESS,          ASCII
+    "R",            IDM_REGACCESS,          ASCII
+    "a",            IDM_ACCVIEW,            ASCII
+    "A",            IDM_ACCVIEW,            ASCII
+    "c",            IDM_CHANSETUP,          ASCII
+    "C",            IDM_CHANSETUP,          ASCII
+    "l",            IDM_LARGETEXTVIEW,      ASCII
+    "L",            IDM_LARGETEXTVIEW,      ASCII
+    "^l",           IDM_LOGALLACC,          ASCII
+    "p",            PAUSE_BUTTON_ID,        ASCII
+    "P",            PAUSE_BUTTON_ID,        ASCII
+
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 80, 40, 184, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About DecaRanging"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDI_DECARANGING,IDC_STATIC,10,14,21,20
+    LTEXT                           SOFTWARE_VER_STRING,IDC_STATIC,42,9,130,8
+    LTEXT               DW1000_DEVICE_DRIVER_VER_STRING,IDC_STATIC,42,21,130,8
+    LTEXT           "Copyright (C) 2014, DecaWave Ltd.",IDC_STATIC,42,33,130,8
+    LTEXT                            "www.decawave.com",IDC_STATIC,42,44,130,8
+    DEFPUSHBUTTON   "OK",IDOK,126,61,50,14,WS_GROUP
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - (Anchor mode) Tag selection Dialog
+//
+
+IDD_TAGSELECTDIALOG DIALOGEX 60, 86, 210, 60
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select tag (address) to range with"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+
+  COMBOBOX IDC_TAGSELECT,16,16,100,60 ,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+
+  PUSHBUTTON "OK",IDOK,     135, 15, 40, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - TX Continuous Wave Test Configuration Dialog
+//
+
+IDD_CWMODE DIALOGEX 30, 86, 220, 80 
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "CW Mode Test Setup"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+LTEXT "Press Start/Stop to start/stop the continuous wave mode.", IDC_STATIC, 25, 25, 200, 20
+#define CDBXY 50
+#define CDBYY 50
+#define CDBWY 50
+DEFPUSHBUTTON "Stop",IDCANCEL, CDBXY,    CDBYY, CDBWY, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+PUSHBUTTON "Start",IDOK,     CDBXY+64, CDBYY, CDBWY, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - TX Power Test Configuration Dialog
+//
+
+IDD_CONTFRAME DIALOGEX 30, 86, 220, 80 
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tx Power Test Setup"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+LTEXT "Press Start/Stop to start/stop the continuous frame mode.", IDC_STATIC, 15, 25, 200, 20
+#define CDBX5Y 15
+#define CDBYY 50
+#define CDBWY 50
+DEFPUSHBUTTON "Stop",IDCANCEL, CDBX5Y,    CDBYY, CDBWY, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+PUSHBUTTON "Start",IDOK,     CDBX5Y+70, CDBYY, CDBWY, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+DEFPUSHBUTTON "Config",IDHELP, CDBX5Y+140, CDBYY, CDBWY, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - Channel Configuration Dialog
+//
+
+IDD_CHANSETUPDIALOG DIALOGEX 30, 86, 294, 154+40 
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Channel Setup"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+
+  GROUPBOX "Channel Selection", ID_CONF_CHANBOX, 8, 8, 136, 30, BS_GROUPBOX
+  COMBOBOX IDC_CHANSELECT,18,18,116,58 ,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+
+  GROUPBOX "Preamble Code", ID_CONF_PCODBOX, 150, 8, 136, 30, BS_GROUPBOX
+  COMBOBOX IDC_PCODSELECT,160,18,116,58 ,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+
+#define CDPLX 8
+#define CDPLY 42
+#define CDPLYS 55
+  GROUPBOX "Preamble Length (Symbol Repetitions)", ID_CONF_PREAMBOX, CDPLX, CDPLY, 136, CDPLYS, BS_GROUPBOX
+
+  //AUTORADIOBUTTON "  16", ID_CONF_PREAM16,   CDPLX+10, CDPLY+10, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_GROUP
+  //AUTORADIOBUTTON "  32", ID_CONF_PREAM32,   CDPLX+50, CDPLY+10, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_DISABLED
+
+  // NB if un-commenting the lines above the "| WS_GROUP" at the end of the next line should be removed !!!!!
+  AUTORADIOBUTTON "  64", ID_CONF_PREAM64,   CDPLX+50, CDPLY+10, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_GROUP
+  AUTORADIOBUTTON " 128", ID_CONF_PREAM128,  CDPLX+90, CDPLY+10, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_DISABLED
+  AUTORADIOBUTTON " 256", ID_CONF_PREAM256,  CDPLX+10, CDPLY+24, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_DISABLED
+  AUTORADIOBUTTON " 512", ID_CONF_PREAM512,  CDPLX+50, CDPLY+24, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_DISABLED
+  AUTORADIOBUTTON "1024", ID_CONF_PREAM1024, CDPLX+90, CDPLY+24, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP
+  AUTORADIOBUTTON "1536", ID_CONF_PREAM1536, CDPLX+10, CDPLY+38, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP
+  AUTORADIOBUTTON "2048", ID_CONF_PREAM2048, CDPLX+50, CDPLY+38, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP | WS_DISABLED
+  AUTORADIOBUTTON "4096", ID_CONF_PREAM4096, CDPLX+90, CDPLY+38, 36, 12, BS_AUTORADIOBUTTON | WS_TABSTOP
+
+#define CPRFX 150
+#define CPRFY 42
+#define CPRFLY 30
+  GROUPBOX "Pulse Repetition Frequency", ID_CONF_PRFBOX, CPRFX, CPRFY, 136, CPRFLY, BS_GROUPBOX
+  AUTORADIOBUTTON "16 MHz", ID_CONF_PRF16MHZ, CPRFX+10, CPRFY+10, 36, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP | WS_GROUP
+  AUTORADIOBUTTON "64 MHz", ID_CONF_PRF64MHZ, CPRFX+70, CPRFY+10, 36, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+
+#define CDRX 150
+#define CDRY (CPRFY+CPRFLY+4)
+  GROUPBOX "Data Rate", ID_CONF_RATEBOX, CDRX, CDRY, 136, 41, BS_GROUPBOX
+  AUTORADIOBUTTON "110  kbits/s", ID_CONF_RATE110K, CDRX+10, CDRY+10, 56, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP | WS_GROUP
+  AUTORADIOBUTTON "850  kbits/s", ID_CONF_RATE850K, CDRX+70, CDRY+10, 56, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+  AUTORADIOBUTTON "6.81 Mbits/s", ID_CONF_RATE6M81, CDRX+10, CDRY+24, 56, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+
+#define CMISCX 8
+#define CMISCY (CDPLY+CDPLYS+2)
+#define CMISCLY 30
+
+  GROUPBOX "", ID_CONF_MISCBOX, CMISCX, CMISCY, 136, CMISCLY, BS_GROUPBOX
+  AUTOCHECKBOX "Non Std SFD", ID_CONF_NSTDSFD, CMISCX+10, CMISCY+10, 60, 12, BS_AUTOCHECKBOX | WS_TABSTOP
+
+#if (PAC_SELECTION == 1)
+#define CDROBX 8
+#define CDROBY (CMISCY+CMISCLY+2) // 41 is size of box above, 2 is separation
+  GROUPBOX "Preamble Acquisition Correlation Size",ID_CONF_PAC_SIZE_BOX,  CDROBX,    CDROBY,   136, 31, BS_GROUPBOX
+  AUTORADIOBUTTON "8",ID_CONF_PAC_8_SYM, CDROBX+10, CDROBY+10, 20, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP | WS_GROUP
+  AUTORADIOBUTTON "16",ID_CONF_PAC_16_SYM, CDROBX+40, CDROBY+10, 20, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+  AUTORADIOBUTTON "32",ID_CONF_PAC_32_SYM, CDROBX+70, CDROBY+10, 20, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+  AUTORADIOBUTTON "64",ID_CONF_PAC_64_SYM, CDROBX+100, CDROBY+10, 20, 12 , BS_AUTORADIOBUTTON  | WS_TABSTOP
+#endif
+
+#if (SNIFF_SELECTION == 1)
+#define CSSBY (CDRY+44+2) // 41 is size of box above, 2 is separation
+  GROUPBOX "SNIFF mode configuration", ID_CONF_SNIFF_SIZE_BOX,  CDRX,    CSSBY,   136, 40, BS_GROUPBOX
+  
+  LTEXT "(max 15)", IDC_STATIC, CDRX+32, CSSBY+12, 30, 10
+  LTEXT "On time in PACs", IDC_STATIC, CDRX+10, CSSBY+21+3, 55, 10
+  EDITTEXT ID_SNIFF_ON, CDRX+10, CSSBY+11, 20, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+  LTEXT "Off time in us", IDC_STATIC, CDRX+70, CSSBY+21+3, 45, 10
+  EDITTEXT ID_SNIFF_OFF, CDRX+70, CSSBY+11, 35, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+#endif
+  
+#define CDN1Y (CDRY+41+15)
+
+#define CDBX 162
+#define CDBY (CDN1Y+11+30)
+#define CDBW 50
+DEFPUSHBUTTON "Cancel",IDCANCEL, CDBX,    CDBY, CDBW, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+PUSHBUTTON "Configure",IDOK,     CDBX+64, CDBY, CDBW, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - Payload Configuration Dialog
+//
+
+IDD_TIMINGDIALOG DIALOGEX 30, 86, 294, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Timing Setup"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+
+#define PDSX1 8
+#define PDSY1 16
+
+LTEXT "Tag blink period (ms):", IDC_STATIC, PDSX1 + 8, PDSY1, 80, 20
+EDITTEXT ID_TAG_BLINK_PERIOD, PDSX1 + 80, PDSY1, 30, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+LTEXT "Tag poll period (ms): ", IDC_STATIC, PDSX1+8, PDSY1+25, 80, 20
+EDITTEXT ID_TAG_POLL_PERIOD, PDSX1+80, PDSY1+25, 30, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+LTEXT "Anchor response delay (ms):", IDC_STATIC, PDSX1+135, PDSY1, 100, 20
+EDITTEXT ID_ANC_RESP_DLY, PDSX1+235, PDSY1, 30, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+LTEXT "Tag response delay (ms):", IDC_STATIC, PDSX1 + 135, PDSY1+25, 100, 20
+EDITTEXT ID_TAG_RESP_DLY, PDSX1 + 235, PDSY1+25, 30, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+#define PDBX 162
+#define PDBY 65
+#define PDBW 50
+  
+  PUSHBUTTON "Cancel",IDCANCEL, PDBX,    PDBY, PDBW, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+  DEFPUSHBUTTON "SET",IDOK,     PDBX+64, PDBY, PDBW, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - Lowlevel Register access Dialog.
+//
+
+IDD_REGACCESSDIALOG DIALOGEX 20, 40, 286, 80
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Low-Level Register Access"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//      http://msdn.microsoft.com/en-us/library/aa511456.aspx
+// Typically, an application uses SendMessage or SendDlgItemMessage to pass messages to the control
+//
+//  GROUPBOX text, id, x, y, width, height [, style [, extended-style]]
+#define LLRX 8
+#define LLRW 54
+
+    GROUPBOX "REG ID (Hex)", ID_REG_ADDRBOX, LLRX, 8, LLRW, 30, BS_GROUPBOX
+    EDITTEXT ID_REG_ADDRESS, LLRX+8, 20, 16, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+#define LLROX (LLRX+LLRW+6)
+#define LLROW 72
+
+#define LLRBX (LLROX+LLROW+18)
+
+#define LLRVW (LLRBX-18-LLRX)
+
+    GROUPBOX "REG OFFSET (Hex)", ID_REG_OFFSBOX, LLROX, 8, LLROW, 30, BS_GROUPBOX
+    EDITTEXT ID_REG_OFFSET, LLROX+8, 20, 32, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+
+    GROUPBOX "REG VALUE (Hex)", ID_REG_VALBOX, LLRX, 42, LLRVW, 30, BS_GROUPBOX
+    EDITTEXT ID_REG_VALUE, 16, 54, 46, 12, ES_LEFT | WS_BORDER | WS_TABSTOP
+
+//  PUSHBUTTON text, id, x, y, width, height [, style [, extended-style]]
+    PUSHBUTTON "READ", ID_REGREAD, LLRBX, 20, 50, 14 , BS_PUSHBUTTON | WS_TABSTOP
+    PUSHBUTTON "WRITE", ID_REGWRITE, LLRBX, 54, 50, 14 , BS_PUSHBUTTON | WS_TABSTOP
+    DEFPUSHBUTTON "FINISHED",IDOK,LLRBX+60,54,50,14,BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog - Load Ucode from a File.
+//
+
+IDD_UCODELOADDIALOG DIALOGEX 16, 40, 290+28, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Load micro-code from a hex file"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+//
+// ref: http://msdn.microsoft.com/en-us/library/aa381009(VS.85).aspx
+//      http://msdn.microsoft.com/en-us/library/aa511456.aspx
+// Typically, an application uses SendMessage or SendDlgItemMessage to pass messages to the control
+//
+
+#define FWNX 8
+#define FWNY 8
+#define FWNW 234+28
+
+    GROUPBOX "File to load from", ID_FRD_NAME_BOX, FWNX, FWNY, FWNW+40, 30, BS_GROUPBOX
+    EDITTEXT ID_FRD_NAME, FWNX+8, FWNY+12, FWNW, 12, ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP
+    PUSHBUTTON "", ID_FRD_FILESEL, FWNX+FWNW+16, FWNY+10, 16, 16 , BS_PUSHBUTTON | WS_TABSTOP | BS_BITMAP
+
+#define FWRX 8
+#define FWRY 42
+
+#define FWCX (132+68)
+#define FWOX (FWCX+58)
+
+//  PUSHBUTTON text, id, x, y, width, height [, style [, extended-style]]
+    PUSHBUTTON "LOAD", IDOK,        FWOX, FWRY+10, 50, 14, BS_PUSHBUTTON | WS_TABSTOP
+    DEFPUSHBUTTON "Cancel",IDCANCEL,FWCX, FWRY+10, 50, 14, BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+   IDC_DECARANGING   "DECARANGING"
+   IDS_APP_TITLE       "DecaRanging"
+END
+
+#endif
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
