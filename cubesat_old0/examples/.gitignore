@@ -1,0 +1,10 @@
+*~
+COOJA.log
+Makefile.target
+
+symbols.c
+symbols.h
+
+obj_*/
+
+*.sky

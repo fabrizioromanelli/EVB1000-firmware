@@ -1,0 +1,14 @@
+*.bin
+*.elf
+*.a
+*.o
+*.evb1000
+obj_evb1000/*
+*.map
+*.d
+*.hex
+*.pyc
+*.DS_Store
+*.swp
+obj_evb1000
+obj_srf06-cc26xx

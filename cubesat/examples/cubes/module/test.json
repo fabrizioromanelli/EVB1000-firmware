@@ -1,0 +1,11 @@
+{
+    "name": "Test cubes",
+    "description" : "",
+    "ts_init" : "now",
+    "duration" : 600,
+    "image": {
+	"hardware" : "evb1000",
+	"file" : "cubes_module.bin",
+	"target" : "all"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Test cubes",
+    "description" : "",
+    "ts_init" : "now",
+    "duration" : 30,
+    "image": {
+	"hardware" : "evb1000",
+	"file" : "cubes_module.bin",
+	"target" : "all"
+    },
+    "python_script" : "script_addr.py"
+}
